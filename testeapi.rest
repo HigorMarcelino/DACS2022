@@ -1,0 +1,143 @@
+###
+GET http://localhost:8081/api/v1/pacientes
+
+###
+GET http://localhost:8081/api/v1/pacientes/65
+
+###
+GET http://localhost:8081/api/v1/pacientes/?nome=ze
+
+###
+
+POST http://localhost:8081/api/v1/pacientes
+content-type: application/json
+
+{
+    "nome": "Zezinho",
+    "sexo": "Masculino",
+    "dataNascimento": "2022-08-17T00:00:00"
+}
+
+###
+
+POST http://localhost:8081/api/v1/pacientes
+content-type: application/json
+
+{
+    "id" : 1,
+    "nome": "Zezinho",
+    "sexo": "Masculino",
+    "dataNascimento": "2022-08-17T00:00:00"
+}
+
+###
+
+POST http://localhost:8081/api/v1/pacientes
+content-type: application/json
+
+{
+    "nome": "Mariazinha",
+    "sexo": "Feminino",
+    "dataNascimento": "2022-08-16T00:00:00"
+}
+
+
+###
+
+PUT http://localhost:8081/api/v1/pacientes/65
+content-type: application/json
+
+{
+    "nome": "Zezinho da Silva Sauro",
+    "sexo": "Masculino",
+    "dataNascimento": "2022-08-17T00:00:00"
+}
+
+###
+
+DELETE http://localhost:8081/api/v1/pacientes/33
+
+
+// MEDICO
+
+
+###
+GET http://localhost:8081/api/v1/medicos
+
+###
+GET http://localhost:8081/api/v1/medicos/65
+
+###
+GET http://localhost:8081/api/v1/medicos/?nome=ze
+
+###
+
+POST http://localhost:8081/api/v1/medicos
+content-type: application/json
+
+{
+    "nome": "Zezinho",
+    "crm": "1234"
+}
+
+###
+
+PUT http://localhost:8081/api/v1/medicos/65
+content-type: application/json
+
+{
+    "nome": "Zezinho da Silva Sauro",
+    "crm": "4321"
+}
+
+###
+
+DELETE http://localhost:8081/api/v1/medicos/33
+
+
+// CIDADE
+
+
+###
+GET http://localhost:8081/api/v1/cidades
+
+###
+GET http://localhost:8081/api/v1/cidades/65
+
+###
+GET http://localhost:8081/api/v1/cidades/?nome=jo
+
+###
+
+POST http://localhost:8081/api/v1/cidades
+content-type: application/json
+
+{
+    "nome": "Joinville"
+}
+
+###
+
+PUT http://localhost:8081/api/v1/cidades/65
+content-type: application/json
+
+{
+    "nome": "Joinvas"
+}
+
+###
+
+DELETE http://localhost:8081/api/v1/cidades/33
+
+###
+GET http://localhost:8081/api/v1/consultas
+
+###
+
+POST http://localhost:8081/api/v1/consultas
+content-type: application/json
+
+{
+    "data": "2002-09-09",
+    "status": "Solteira"
+}
