@@ -4,7 +4,7 @@ package br.univille.apidacs2022;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+//import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -22,7 +22,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import com.fasterxml.jackson.core.JsonpCharacterEscapes;
+//import com.fasterxml.jackson.core.JsonpCharacterEscapes;
 
 import br.univille.apidacs2022.api.CidadeControllerApi;
 import br.univille.apidacs2022.api.ConsultaControllerApi;
@@ -65,26 +65,40 @@ class Apidacs2022ApplicationTests {
 	// testes pacientes
 	@Test
 	void pacienteControllerAPITest() throws Exception{
+		MvcResult resultAuth = 
+		mockMvc.perform(post("/api/v1/auth/signin")
+			.content("{\"user\":\"admin\",\"senha\":\"senha\"}")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk()).andReturn();
+		String jwtToken = resultAuth.getResponse().getContentAsString();
+
 		MvcResult result = 
 		mockMvc.perform(post("/api/v1/pacientes")
 			.content("{\"nome\":\"Teste\",\"sexo\":\"Masculino\"}")
+			.header("Authorization", "Bearer " + jwtToken)
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isCreated()).andReturn();
 		
 		String resultStr = result.getResponse().getContentAsString();
 		JSONObject objJson = new JSONObject(resultStr);
 
-		mockMvc.perform(get("/api/v1/pacientes/" + objJson.getString("id")))
+		mockMvc.perform(get("/api/v1/pacientes/" + objJson.getString("id"))
+			.header("Authorization", "Bearer " + jwtToken))
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$.nome", is("Teste")))
 			.andExpect(jsonPath("$.sexo", is("Masculino")));
 
 		mockMvc.perform(put("/api/v1/pacientes/" + objJson.getString("id"))
 		.content("{\"id\":\""+objJson.getString("id")+"\", \"nome\":\"Testa\",\"sexo\":\"Masculino\"}")
+		.header("Authorization", "Bearer " + jwtToken)
 		.contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk())
 		.andExpect(jsonPath("$.nome", is("Testa")))
 		.andExpect(jsonPath("$.sexo", is("Masculino")));
+
+		mockMvc.perform(delete("/api/v1/pacientes/" + objJson.getString("id"))
+		.header("Authorization", "Bearer " + jwtToken))
+		.andExpect(status().isOk());
 	}
 
 
