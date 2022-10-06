@@ -87,7 +87,7 @@ public class MedicoControllerApi {
         }
         service.delete(MedicoAntigo.getId());
 
-        return new ResponseEntity<Medico>(MedicoAntigo,HttpStatus.OK);
+        return new ResponseEntity<Medico>(HttpStatus.OK);
     }
     
 }

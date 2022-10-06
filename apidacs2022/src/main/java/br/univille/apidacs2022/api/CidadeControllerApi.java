@@ -86,6 +86,6 @@ public class CidadeControllerApi {
         }
         service.delete(CidadeAntigo.getId());
 
-        return new ResponseEntity<Cidade>(CidadeAntigo,HttpStatus.OK);
+        return new ResponseEntity<Cidade>(HttpStatus.OK);
     }
 }

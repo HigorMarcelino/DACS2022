@@ -86,6 +86,6 @@ public class PlanoDeSaudeControllerApi {
         }
         service.delete(planoDeSaudeAntigo.getId());
 
-        return new ResponseEntity<PlanoDeSaude>(planoDeSaudeAntigo,HttpStatus.OK);
+        return new ResponseEntity<PlanoDeSaude>(HttpStatus.OK);
     }
 }

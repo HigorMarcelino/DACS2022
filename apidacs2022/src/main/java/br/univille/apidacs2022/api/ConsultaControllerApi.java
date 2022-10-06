@@ -79,6 +79,6 @@ public class ConsultaControllerApi {
         }
         service.delete(consultaAntigo.getId());
 
-        return new ResponseEntity<Consulta>(consultaAntigo,HttpStatus.OK);
+        return new ResponseEntity<Consulta>(HttpStatus.OK);
     }
 }

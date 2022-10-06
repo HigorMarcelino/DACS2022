@@ -90,7 +90,7 @@ public class PacienteControllerAPI {
         }
         service.delete(pacienteAntigo.getId());
 
-        return new ResponseEntity<Paciente>(pacienteAntigo,HttpStatus.OK);
+        return new ResponseEntity<Paciente>(HttpStatus.OK);
     }
     
 }

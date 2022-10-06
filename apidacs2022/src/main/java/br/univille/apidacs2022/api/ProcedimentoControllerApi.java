@@ -77,6 +77,6 @@ public class ProcedimentoControllerApi {
         }
         service.delete(procedimentoAntigo.getId());
 
-        return new ResponseEntity<Procedimento>(procedimentoAntigo,HttpStatus.OK);
+        return new ResponseEntity<Procedimento>(HttpStatus.OK);
     }
 }
