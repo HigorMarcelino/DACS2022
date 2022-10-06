@@ -29,27 +29,19 @@ public class AuthenticationController {
     @Autowired
     private JWTUtil serviceJWT;
 
-<<<<<<< HEAD
+
     private Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
 
-=======
->>>>>>> 403655f6c251d9f425fe315bfc3e7023211afc57
+
     @PostMapping("/signin")
     public ResponseEntity signin(@RequestBody User usuario){
         UserDetails userDetails = serviceMyUserDetail.loadUserByUsername(usuario.getUser());
         if(userDetails.getPassword().equals(usuario.getSenha())){
             String token = serviceJWT.generateToken(userDetails);
-<<<<<<< HEAD
-            logger.info("Usuário autenticado: " + usuario.getUser());
-=======
->>>>>>> 403655f6c251d9f425fe315bfc3e7023211afc57
+
+            logger.info("Usuário autenticado: " + usuario.getUser())
             return ResponseEntity.ok(token);    
         }
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 403655f6c251d9f425fe315bfc3e7023211afc57
 }
