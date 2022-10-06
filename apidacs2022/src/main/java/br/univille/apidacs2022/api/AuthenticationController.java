@@ -1,8 +1,11 @@
 package br.univille.apidacs2022.api;
 
+<<<<<<< HEAD
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+=======
+>>>>>>> 403655f6c251d9f425fe315bfc3e7023211afc57
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,18 +29,27 @@ public class AuthenticationController {
     @Autowired
     private JWTUtil serviceJWT;
 
+<<<<<<< HEAD
     private Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
 
+=======
+>>>>>>> 403655f6c251d9f425fe315bfc3e7023211afc57
     @PostMapping("/signin")
     public ResponseEntity signin(@RequestBody User usuario){
         UserDetails userDetails = serviceMyUserDetail.loadUserByUsername(usuario.getUser());
         if(userDetails.getPassword().equals(usuario.getSenha())){
             String token = serviceJWT.generateToken(userDetails);
+<<<<<<< HEAD
             logger.info("Usuário autenticado: " + usuario.getUser());
+=======
+>>>>>>> 403655f6c251d9f425fe315bfc3e7023211afc57
             return ResponseEntity.ok(token);    
         }
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 403655f6c251d9f425fe315bfc3e7023211afc57
 }
